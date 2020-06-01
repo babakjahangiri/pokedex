@@ -27,9 +27,11 @@ export default function BestPokemonFetcher() {
       .then((data) => setBestPokemon(data.name));
   }, []);
 
-  if (!bestPokemon) {
-    return null;
-  } else {
-    return <BestPokemon pokemon={bestPokemon} />;
-  }
+  // if (!bestPokemon) {
+  //   return null;
+  // } else {
+  //   return <BestPokemon pokemon={bestPokemon} />;
+  // }
+
+  return !bestPokemon ? null : <BestPokemon pokemon={bestPokemon} />;
 }
