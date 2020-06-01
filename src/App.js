@@ -4,9 +4,14 @@ import BestPokemon from "./BestPokemon";
 import CaughtPokemon from "./CoughPokemon";
 
 function App() {
+  function logWhenClicked() {
+    console.log("Button was clicked!");
+    console.log("");
+  }
+
   return (
     <div>
-      <Logo appName="Pokedex" />
+      <Logo appName="Pokedex" handleClick={logWhenClicked} />
       <BestPokemon />
       <CaughtPokemon />
     </div>
