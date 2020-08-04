@@ -4,16 +4,40 @@ import "./CoughPokemon.css";
 function CaughtPokemon() {
   const date = new Date().toLocaleDateString();
 
-  const [totalCaught, setTotalCaught] = useState(14);
+  const [totalCaught, setTotalCaught] = useState([]);
+  const [pokemonNameInput, setPokemonNameInput] = useState("");
 
   function updateTotalCaught() {
-    setTotalCaught(totalCaught + 1);
+    if (pokemonNameInput !== "") {
+      setTotalCaught(totalCaught.concat(pokemonNameInput));
+    } else {
+      alert("you must type your pokemon name");
+    }
+    setPokemonNameInput("");
   }
+
+  function handleInputChange(event) {
+    setPokemonNameInput(event.target.value);
+
+    // console.log(event.target.value);
+  }
+
   return (
     <div>
       <p>
-        Caught {totalCaught} Pokemon on {date}
+        Caught
+        <ul>
+          {totalCaught.map((name) => {
+            return <li>{name}</li>;
+          })}
+        </ul>
+        Pokemon on {date}
       </p>
+      <input
+        type="text"
+        value={pokemonNameInput}
+        onChange={handleInputChange}
+      ></input>
 
       <button className="btn-cough" onClick={updateTotalCaught}>
         {"catch a pokemon"}
